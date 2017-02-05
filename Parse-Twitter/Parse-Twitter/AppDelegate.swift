@@ -25,6 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: config)
         
+        //Here I will present my own view controller
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "PostViewController")
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
