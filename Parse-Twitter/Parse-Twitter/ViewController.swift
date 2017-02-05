@@ -71,13 +71,11 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         logInController.dismiss(animated: true, completion: nil)
         print(user.email!)
         
-        //show chat
-        if isViewLoaded {
-           show(self)
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.appController.didLogin()
         }
         //present homeViewControler Here
- 
-    }
+     }
 
 }
 

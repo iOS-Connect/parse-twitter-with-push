@@ -14,7 +14,7 @@ import ParseUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var appController: AppController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,10 +24,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://iostwitter.herokuapp.com/parse"
         }
         Parse.initialize(with: config)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+
+        appController = AppController(window!)
+        appController.showFirstController()
         
         return true
     }
     
+}
+class AppController {
+    
+    var window: UIWindow!
+    init(_ window: UIWindow) {
+        self.window = window
+    }
+    func didLogout() {
+        showFirstController()
+    }
+    func didLogin() {
+        showFirstController()
+    }
+    
+    func showFirstController() {
+        if let _ = PFUser.current() {
+            showChatController()
+        } else {
+            showLoginController()
+        }
+    }
+    
+    func showChatController() {
+        let stroyboard = UIStoryboard(name: "ChatTable", bundle: nil)
+        let ctvc = stroyboard.instantiateInitialViewController()
+        self.window.rootViewController = ctvc
+
+        /*(
+        let ctvc = stroyboard.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
+        let nvc = UINavigationController(rootViewController: ctvc)
+        ctvc.parseClassName = "GameScore"
+        self.window.rootViewController = ctvc
+        //present(ctvc, animated: true, completion: nil)
+        */
+    }
+    func showLoginController() {
+        let stroyboard = UIStoryboard(name: "Main", bundle: nil)
+        let lvc = stroyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.window.rootViewController = lvc
+    }
 }
 
 /*
