@@ -25,12 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: config)
         
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//       
-//        window?.makeKeyAndVisible()
-         //PFQueryTableViewController(className: "GameScore")
-        //window?.rootViewController = ctvc
-        
         return true
     }
     
