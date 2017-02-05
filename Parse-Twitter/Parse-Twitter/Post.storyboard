@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Post View Controller-->
+        <scene sceneID="odQ-ua-tRq">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" id="iZU-V4-7pC" customClass="PostViewController" customModule="Parse_Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iDx-vp-IY7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mfp-Tn-OZe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4cO-cs-n3h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter messages here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YO2-vX-Uep">
+                                <rect key="frame" x="16" y="79" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kVd-Ja-GfW" customClass="PFImageView">
+                                <rect key="frame" x="16" y="134" width="343" height="343"/>
+                                <color key="backgroundColor" red="0.79781636450000004" green="1" blue="0.70305999139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="eU3-eO-h6b" appends="YES" id="ACh-Yx-tm8"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-Sj-hxg">
+                                <rect key="frame" x="163" y="525" width="48" height="30"/>
+                                <state key="normal" title="Post it!"/>
+                                <connections>
+                                    <action selector="postButton:" destination="iZU-V4-7pC" eventType="touchUpInside" id="X6C-Tz-0H3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YO2-vX-Uep" firstAttribute="leading" secondItem="kVd-Ja-GfW" secondAttribute="leading" id="1mS-xQ-lx0"/>
+                            <constraint firstItem="kVd-Ja-GfW" firstAttribute="top" secondItem="YO2-vX-Uep" secondAttribute="bottom" constant="25" id="37P-vE-ZW5"/>
+                            <constraint firstItem="YO2-vX-Uep" firstAttribute="trailing" secondItem="kVd-Ja-GfW" secondAttribute="trailing" id="50O-To-pey"/>
+                            <constraint firstItem="Mfp-Tn-OZe" firstAttribute="top" secondItem="5F5-Sj-hxg" secondAttribute="bottom" constant="112" id="Nlf-zM-Iv4"/>
+                            <constraint firstItem="5F5-Sj-hxg" firstAttribute="top" secondItem="kVd-Ja-GfW" secondAttribute="bottom" constant="48" id="WP1-2p-een"/>
+                            <constraint firstItem="YO2-vX-Uep" firstAttribute="top" secondItem="iDx-vp-IY7" secondAttribute="bottom" constant="59" id="csm-nH-wQ1"/>
+                            <constraint firstItem="YO2-vX-Uep" firstAttribute="leading" secondItem="4cO-cs-n3h" secondAttribute="leadingMargin" id="g4v-SG-LFJ"/>
+                            <constraint firstItem="YO2-vX-Uep" firstAttribute="trailing" secondItem="4cO-cs-n3h" secondAttribute="trailingMargin" id="tll-JG-IVw"/>
+                            <constraint firstItem="kVd-Ja-GfW" firstAttribute="centerX" secondItem="5F5-Sj-hxg" secondAttribute="centerX" id="xVj-10-UDZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageField" destination="YO2-vX-Uep" id="SW6-TT-q8a"/>
+                        <outlet property="myImage" destination="kVd-Ja-GfW" id="tc7-0Y-cfD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEu-T5-rLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eU3-eO-h6b">
+                    <connections>
+                        <action selector="imageOptions:" destination="iZU-V4-7pC" id="2iX-6w-um2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="304.80000000000001" y="114.69265367316342"/>
+        </scene>
+    </scenes>
+</document>
