@@ -28,9 +28,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kVd-Ja-GfW" customClass="PFImageView">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kVd-Ja-GfW" customClass="PFImageView">
                                 <rect key="frame" x="16" y="134" width="343" height="343"/>
                                 <color key="backgroundColor" red="0.79781636450000004" green="1" blue="0.70305999139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="eU3-eO-h6b" appends="YES" id="ACh-Yx-tm8"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-Sj-hxg">
                                 <rect key="frame" x="163" y="525" width="48" height="30"/>
@@ -59,6 +63,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEu-T5-rLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="eU3-eO-h6b">
+                    <connections>
+                        <action selector="imageOptions:" destination="iZU-V4-7pC" id="2iX-6w-um2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="304.80000000000001" y="114.69265367316342"/>
         </scene>

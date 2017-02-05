@@ -7,6 +7,9 @@ class PostViewController: UIViewController {
 
     @IBOutlet weak var messageField: UITextField!
     
+    @IBAction func imageOptions(_ sender: Any) {
+        print("tapped")
+    }
 
     @IBAction func postButton(_ sender: Any) {
         print("Message: \(messageField.text)")
@@ -19,18 +22,11 @@ class PostViewController: UIViewController {
                 print("failed")
             }
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //add an tap gensture on top of the image view
-        let tap = UITapGestureRecognizer(target: self, action: #selector(PostViewController.imageOption(sender:)))
-        myImage.isUserInteractionEnabled = true;
-        myImage.addGestureRecognizer(tap)
     }
     
-    func imageOption(sender: UIImageView) {
-        print("tapped")
-    }
+
 }
