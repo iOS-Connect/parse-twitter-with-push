@@ -18,6 +18,7 @@ class PostViewController: UIViewController {
         postObject.saveInBackground { (success, error) in
             if (success) {
                 print("succeed")
+                UIApplication.shared.appDelegate.appController.postSucceed(self)
             } else {
                 print("failed")
             }

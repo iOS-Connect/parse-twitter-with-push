@@ -62,9 +62,17 @@ class AppController {
         let lvc = stroyboard.instantiateInitialViewController()
         self.window.rootViewController = lvc
     }
-
+    
+    func postSucceed(_ viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
 }
 
+extension UIApplication {
+    var appDelegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+}
 /*
  curl -X POST \
  -H "X-Parse-Application-Id: myAppId" \

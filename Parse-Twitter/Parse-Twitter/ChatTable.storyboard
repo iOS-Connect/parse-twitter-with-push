@@ -49,6 +49,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="mw4-Hz-7dO">
+                        <barButtonItem key="leftBarButtonItem" title="Post" id="6rk-Yr-dfZ">
+                            <connections>
+                                <action selector="post" destination="wHN-cY-opq" id="gMt-U7-fY0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="RdX-Q4-Bhd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ubu-4H-wIW">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>

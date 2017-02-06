@@ -31,7 +31,13 @@ class ChatTableViewController: PFQueryTableViewController {
        
     }
     
-    
+    @IBAction func post() {
+        let sb = UIStoryboard(name: "Post", bundle: nil)
+        let postvc = sb.instantiateViewController(withIdentifier: "PostViewController")
+        self.present(postvc, animated: true) { 
+        }
+    }
+
     @IBAction func logout() {
         PFUser.logOut()
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
