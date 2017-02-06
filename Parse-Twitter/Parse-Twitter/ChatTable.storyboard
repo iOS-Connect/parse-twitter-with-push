@@ -50,6 +50,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="vog-4L-1p6" id="fm5-8b-e7F"/>
+                                    <outlet property="likeButton" destination="gji-Me-2Np" id="uiO-9V-ujC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

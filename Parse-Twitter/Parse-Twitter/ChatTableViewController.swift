@@ -14,8 +14,11 @@ class ChatCell: PFTableViewCell {
     var name: String?
     var time: Date?
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var likeButton:UIButton!
+
     var liked: (() -> Void )?
     @IBAction func like(_ sender: UIButton) {
+        likeButton.isEnabled = false
         liked?()
     }
 }
@@ -49,15 +52,24 @@ class ChatTableViewController: PFQueryTableViewController {
     
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
         guard let chatCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? ChatCell else {
-            //object["username"]
-            
             return nil
         }
+        if let likesArr = object?["likes"] {
+            let likes = Set<String>( likesArr as! [String])
+            if likes.contains(PFUser.current()!.objectId!) {
+                chatCell.likeButton.isEnabled = false
+            } else {
+                chatCell.likeButton.isEnabled = true
+            }
+        }
+        //callback when like btn is clicked
         chatCell.liked = {
             //postLike()
-            if var likes = object?["likes"] as? [String] {
-                likes.append(PFUser.current()!.objectId!)
-                object?["likes"] = likes
+
+            if var likes = object?["likes"] as? Set<String> {
+                
+                likes.insert(PFUser.current()!.objectId!)
+                object?["likes"] = Array(likes)
                 object?.saveInBackground { (success, error) in
                     if (success) {
                         print("like succeed")
