@@ -26,16 +26,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vog-4L-1p6">
-                                            <rect key="frame" x="25" y="41" width="328" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vog-4L-1p6">
+                                            <rect key="frame" x="25" y="41" width="252" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gji-Me-2Np">
+                                            <rect key="frame" x="315" y="36" width="30" height="30"/>
+                                            <state key="normal" title="Like"/>
+                                            <connections>
+                                                <action selector="like:" destination="khg-v6-GPd" eventType="touchUpInside" id="9v8-He-BeV"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="vog-4L-1p6" firstAttribute="top" secondItem="UMe-Ss-0hx" secondAttribute="topMargin" constant="33" id="ShX-BO-ZZl"/>
+                                        <constraint firstItem="gji-Me-2Np" firstAttribute="centerY" secondItem="UMe-Ss-0hx" secondAttribute="centerY" id="44J-vN-d1W"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gji-Me-2Np" secondAttribute="trailing" constant="22" id="JCL-C2-bo5"/>
                                         <constraint firstItem="vog-4L-1p6" firstAttribute="leading" secondItem="UMe-Ss-0hx" secondAttribute="leadingMargin" constant="17" id="aDx-qt-8UQ"/>
+                                        <constraint firstItem="vog-4L-1p6" firstAttribute="centerY" secondItem="UMe-Ss-0hx" secondAttribute="centerY" id="bn6-hU-Xgn"/>
+                                        <constraint firstItem="gji-Me-2Np" firstAttribute="leading" secondItem="vog-4L-1p6" secondAttribute="trailing" constant="38" id="fmi-Aw-Mpj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

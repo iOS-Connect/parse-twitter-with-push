@@ -13,8 +13,13 @@ class PostViewController: UIViewController {
 
     @IBAction func postButton(_ sender: Any) {
         print("Message: \(messageField.text)")
-        var postObject = PFObject(className:"Posts")
+        let postObject = PFObject(className:"Posts")
         postObject["message"] = messageField.text!
+        postObject["userId"] = PFUser.current()?.objectId
+        postObject["username"] = PFUser.current()?.username
+        postObject["email"] = PFUser.current()?.email
+        postObject["likes"] = [String]()
+        //likes
         postObject.saveInBackground { (success, error) in
             if (success) {
                 print("succeed")
@@ -24,10 +29,4 @@ class PostViewController: UIViewController {
             }
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-
 }

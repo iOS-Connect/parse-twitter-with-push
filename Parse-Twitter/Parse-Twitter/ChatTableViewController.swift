@@ -10,12 +10,14 @@ import UIKit
 import Parse
 import ParseUI
 
-
-
 class ChatCell: PFTableViewCell {
     var name: String?
     var time: Date?
-     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label: UILabel!
+    var liked: (() -> Void )?
+    @IBAction func like(_ sender: UIButton) {
+        liked?()
+    }
 }
 
 class ChatTableViewController: PFQueryTableViewController {
@@ -47,12 +49,27 @@ class ChatTableViewController: PFQueryTableViewController {
     
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
         guard let chatCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? ChatCell else {
+            //object["username"]
+            
             return nil
+        }
+        chatCell.liked = {
+            //postLike()
+            if var likes = object?["likes"] as? [String] {
+                likes.append(PFUser.current()!.objectId!)
+                object?["likes"] = likes
+                object?.saveInBackground { (success, error) in
+                    if (success) {
+                        print("like succeed")
+                    } else {
+                        print("failed")
+                    }
+                }
+            }
         }
         if let score = object {
             chatCell.label.text = score["message"] as? String
         }
-        
         return chatCell
     }
     
