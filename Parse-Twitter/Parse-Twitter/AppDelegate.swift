@@ -5,31 +5,38 @@ import ParseUI
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    var appController: AppController!
+    lazy var window: UIWindow? = UIWindow.make()
+    lazy var appController: AppController = AppController(self.window!)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        setupParse()
+        appController.showFirstController()
+
+        return true
+    }
+
+    private func setupParse() {
         let config = ParseClientConfiguration {
             $0.applicationId = "myAppId"
             $0.clientKey = "myMasterKey"
             $0.server = "https://iostwitter.herokuapp.com/parse"
         }
         Parse.initialize(with: config)
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-
-        appController = AppController(window!)
-        appController.showFirstController()
-        
-        return true
     }
-    
 }
+
+extension UIWindow {
+    static func make() -> UIWindow {
+        let win = UIWindow(frame: UIScreen.main.bounds)
+        win.makeKeyAndVisible()
+        return win
+    }
+}
+
 class AppController {
     
-    var window: UIWindow!
+    var window: UIWindow
 
     init(_ window: UIWindow) {
         self.window = window
