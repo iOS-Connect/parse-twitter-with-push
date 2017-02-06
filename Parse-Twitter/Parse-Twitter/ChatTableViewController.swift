@@ -49,8 +49,12 @@ class ChatTableViewController: PFQueryTableViewController {
 
         let chatCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
 
-        if let likesArr = object?["likes"] {
-            let likes = Set<String>( likesArr as! [String])
+        guard let object = object, let post = object as? Post else {
+            print("Asked to make a table view cell for Empty Object")
+            return nil
+        }
+
+        if let likes = post.likes {
             if likes.contains(PFUser.current()!.objectId!) {
                 chatCell.likeButton.isEnabled = false
             } else {
@@ -60,11 +64,11 @@ class ChatTableViewController: PFQueryTableViewController {
 
         chatCell.liked = {
 
-            if var likes = object?["likes"] as? Set<String> {
+            if var likes = post.likes {
                 
                 likes.insert(PFUser.current()!.objectId!)
-                object?["likes"] = Array(likes)
-                object?.saveInBackground { (success, error) in
+                post["likes"] = Array(likes)
+                post.saveInBackground { (success, error) in
                     if (success) {
                         print("like succeed")
                     } else {
@@ -73,10 +77,21 @@ class ChatTableViewController: PFQueryTableViewController {
                 }
             }
         }
-        if let score = object {
-            chatCell.label.text = score["message"] as? String
-        }
+        chatCell.label.text = post.message
         return chatCell
     }
 
+}
+
+class Post : PFObject {
+    var likes: Set<String>? {
+        guard let likesObj = self["likes"],
+            let likesString = likesObj as? [String] else {
+                return nil
+        }
+        return Set<String>(likesString)
+    }
+    var message: String? {
+        return self["message"] as? String
+    }
 }
