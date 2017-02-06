@@ -32,6 +32,7 @@ class ChatTableViewController: PFQueryTableViewController {
     }
 
     @IBAction func post() {
+        // TODO: This should call out to the AppController, insted of presenting the VC itself
         let sb = UIStoryboard(name: "Post", bundle: nil)
         let postvc = sb.instantiateViewController(withIdentifier: "PostViewController")
         self.present(postvc, animated: true) { 
