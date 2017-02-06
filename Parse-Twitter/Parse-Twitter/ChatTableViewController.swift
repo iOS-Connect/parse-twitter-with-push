@@ -46,9 +46,9 @@ class ChatTableViewController: PFQueryTableViewController {
     }
     
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> PFTableViewCell? {
-        guard let chatCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? ChatCell else {
-            return nil
-        }
+
+        let chatCell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+
         if let likesArr = object?["likes"] {
             let likes = Set<String>( likesArr as! [String])
             if likes.contains(PFUser.current()!.objectId!) {
