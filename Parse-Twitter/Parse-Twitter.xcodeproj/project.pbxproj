@@ -11,7 +11,7 @@
 		0DF9B2751E47E44D00EDC9E6 /* ChatTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF9B2741E47E44D00EDC9E6 /* ChatTable.storyboard */; };
 		52AF27B41E47D2150022475C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF27B31E47D2150022475C /* AppDelegate.swift */; };
 		52AF27B61E47D2150022475C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF27B51E47D2150022475C /* ViewController.swift */; };
-		52AF27B91E47D2150022475C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AF27B71E47D2150022475C /* Main.storyboard */; };
+		52AF27B91E47D2150022475C /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AF27B71E47D2150022475C /* Welcome.storyboard */; };
 		52AF27BB1E47D2150022475C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52AF27BA1E47D2150022475C /* Assets.xcassets */; };
 		52AF27BE1E47D2150022475C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AF27BC1E47D2150022475C /* LaunchScreen.storyboard */; };
 		B8A0942C049519C121169290 /* Pods_Parse_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711D0652DA9F5ADA236F7A47 /* Pods_Parse_Twitter.framework */; };
@@ -23,7 +23,7 @@
 		52AF27B01E47D2150022475C /* Parse-Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parse-Twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AF27B31E47D2150022475C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52AF27B51E47D2150022475C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		52AF27B81E47D2150022475C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52AF27B81E47D2150022475C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		52AF27BA1E47D2150022475C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52AF27BD1E47D2150022475C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52AF27BF1E47D2150022475C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			children = (
 				52AF27B31E47D2150022475C /* AppDelegate.swift */,
 				52AF27B51E47D2150022475C /* ViewController.swift */,
-				52AF27B71E47D2150022475C /* Main.storyboard */,
+				52AF27B71E47D2150022475C /* Welcome.storyboard */,
 				52AF27BA1E47D2150022475C /* Assets.xcassets */,
 				52AF27BC1E47D2150022475C /* LaunchScreen.storyboard */,
 				52AF27BF1E47D2150022475C /* Info.plist */,
@@ -159,8 +159,8 @@
 			files = (
 				52AF27BE1E47D2150022475C /* LaunchScreen.storyboard in Resources */,
 				52AF27BB1E47D2150022475C /* Assets.xcassets in Resources */,
-				52AF27B91E47D2150022475C /* Main.storyboard in Resources */,
 				0DF9B2751E47E44D00EDC9E6 /* ChatTable.storyboard in Resources */,
+				52AF27B91E47D2150022475C /* Welcome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,12 +228,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		52AF27B71E47D2150022475C /* Main.storyboard */ = {
+		52AF27B71E47D2150022475C /* Welcome.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				52AF27B81E47D2150022475C /* Base */,
 			);
-			name = Main.storyboard;
+			name = Welcome.storyboard;
 			sourceTree = "<group>";
 		};
 		52AF27BC1E47D2150022475C /* LaunchScreen.storyboard */ = {
