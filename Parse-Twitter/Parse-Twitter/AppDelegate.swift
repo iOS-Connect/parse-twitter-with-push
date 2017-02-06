@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Parse-Twitter
-//
-//  Created by John Regner on 2/5/17.
-//  Copyright © 2017 Santa Clara iOS Connect. All rights reserved.
-//
-
 import UIKit
 import Parse
 import ParseUI
@@ -17,13 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appController: AppController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         let config = ParseClientConfiguration {
             $0.applicationId = "myAppId"
             $0.clientKey = "myMasterKey"
             $0.server = "https://iostwitter.herokuapp.com/parse"
         }
         Parse.initialize(with: config)
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
@@ -37,12 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 class AppController {
     
     var window: UIWindow!
+
     init(_ window: UIWindow) {
         self.window = window
     }
+
     func didLogout() {
         showFirstController()
     }
+
     func didLogin() {
         showFirstController()
     }
@@ -59,20 +55,14 @@ class AppController {
         let stroyboard = UIStoryboard(name: "ChatTable", bundle: nil)
         let ctvc = stroyboard.instantiateInitialViewController()
         self.window.rootViewController = ctvc
-
-        /*(
-        let ctvc = stroyboard.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
-        let nvc = UINavigationController(rootViewController: ctvc)
-        ctvc.parseClassName = "GameScore"
-        self.window.rootViewController = ctvc
-        //present(ctvc, animated: true, completion: nil)
-        */
     }
+
     func showLoginController() {
-        let stroyboard = UIStoryboard(name: "Main", bundle: nil)
-        let lvc = stroyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let stroyboard = UIStoryboard(name: "Welcome", bundle: nil)
+        let lvc = stroyboard.instantiateInitialViewController()
         self.window.rootViewController = lvc
     }
+
 }
 
 /*
