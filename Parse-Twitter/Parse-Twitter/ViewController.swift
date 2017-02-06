@@ -14,7 +14,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     
     @IBOutlet var loginButton: UIButton!
-   
+    
+    func show(_ sender: Any) {
+        let stroyboard = UIStoryboard(name: "ChatTable", bundle: nil)
+        let ctvc = stroyboard.instantiateViewController(withIdentifier: "ChatTableViewController") as! ChatTableViewController
+        ctvc.parseClassName = "GameScore"
+        self.navigationController?.pushViewController(ctvc, animated: true)
+        //present(ctvc, animated: true, completion: nil)
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,16 +67,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
     
     func log(_ logInController: PFLogInViewController, didLogIn user: PFUser) {
-        
+        //dismiss top login VC
+        logInController.dismiss(animated: true, completion: nil)
         print(user.email!)
         
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.appController.didLogin()
+        }
         //present homeViewControler Here
-
-
-        
-        
-        
-    }
+     }
 
 }
 
