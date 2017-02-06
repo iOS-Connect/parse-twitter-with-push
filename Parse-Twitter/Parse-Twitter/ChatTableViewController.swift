@@ -25,17 +25,12 @@ class ChatCell: PFTableViewCell {
 
 class ChatTableViewController: PFQueryTableViewController {
     let className = "Posts"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         parseClassName = className
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-    }
-    
+
     @IBAction func post() {
         let sb = UIStoryboard(name: "Post", bundle: nil)
         let postvc = sb.instantiateViewController(withIdentifier: "PostViewController")
@@ -62,9 +57,8 @@ class ChatTableViewController: PFQueryTableViewController {
                 chatCell.likeButton.isEnabled = true
             }
         }
-        //callback when like btn is clicked
+
         chatCell.liked = {
-            //postLike()
 
             if var likes = object?["likes"] as? Set<String> {
                 
@@ -84,6 +78,5 @@ class ChatTableViewController: PFQueryTableViewController {
         }
         return chatCell
     }
-    
-}
 
+}
