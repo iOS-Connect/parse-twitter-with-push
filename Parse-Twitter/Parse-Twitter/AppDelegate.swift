@@ -15,18 +15,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appController.showFirstController()
         
         requestNotification()
+        handleRemoteNotification(from: launchOptions, for: application)
         return true
     }
+    
     private func requestNotification() {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options: [.alert]) { (completed, err) in
             if completed {
                 print("agreed")
-                UIApplication.shared.registerForRemoteNotifications()
                 
+                UIApplication.shared.registerForRemoteNotifications()
+                self.playLocalNotification()
                 } else {
                 print("not agreed")
+            }
+        }
+    }
+    
+    private func handleRemoteNotification(from launchOptions:[UIApplicationLaunchOptionsKey: Any]?, for application: UIApplication) {
+        if let launchOptions = launchOptions {
+            if let notificationDictionary = launchOptions[.remoteNotification] as? [NSObject : AnyObject] {
+                self.application(application, didReceiveRemoteNotification: notificationDictionary, fetchCompletionHandler: { (result) in
+                    
+                })
+            }
+        }
+    }
+    
+    private func playLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "title"
+        content.body = "sexy body"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "request.id", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (err) in
+            if(err != nil) {
+                print("failed to schedule \(err)")
             }
         }
     }
@@ -47,7 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
+        let installation = PFInstallation.current()
+        installation?["user"] = PFUser.current()
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
     }
     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
@@ -56,6 +85,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PFPush.handle(userInfo)
     }
 }
 
