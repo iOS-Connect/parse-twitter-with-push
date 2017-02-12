@@ -84,15 +84,20 @@ class ChatTableViewController: PFQueryTableViewController {
 
 }
 
-class Post : PFObject {
-    var likes: Set<String>? {
-        guard let likesObj = self["likes"],
-            let likesString = likesObj as? [String] else {
-                return nil
-        }
-        return Set<String>(likesString)
+class Post : PFObject, PFSubclassing {
+    static func parseClassName() -> String {
+        return "Posts"
     }
-    var message: String? {
-        return self["message"] as? String
-    }
+    @NSManaged var likes: Set<String>?
+//    {
+//        guard let likesObj = self["likes"],
+//            let likesString = likesObj as? [String] else {
+//                return nil
+//        }
+//        return Set<String>(likesString)
+//    }
+    @NSManaged var message: String?
+//    {
+//        return self["message"] as? String
+//    }
 }

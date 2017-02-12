@@ -5,18 +5,22 @@ import ParseUI
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    lazy var window: UIWindow? = UIWindow.make()
-    lazy var appController: AppController = AppController(self.window!)
+     var window: UIWindow? = UIWindow.make()
+     var appController: AppController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        self.appController = AppController(window!)
         setupParse()
         appController.showFirstController()
-
+        
         return true
     }
 
     private func setupParse() {
+        //set subclass
+        Post.registerSubclass()
+        
+        //init
         let config = ParseClientConfiguration {
             $0.applicationId = "myAppId"
             $0.clientKey = "myMasterKey"
