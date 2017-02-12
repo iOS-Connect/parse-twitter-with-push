@@ -22,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0DC519AC1E47DE2300166065 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		0DF9B2741E47E44D00EDC9E6 /* ChatTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatTable.storyboard; sourceTree = "<group>"; };
+		527E7EE91E512109007EAAC9 /* Parse-Twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Parse-Twitter.entitlements"; sourceTree = "<group>"; };
 		52AF27B01E47D2150022475C /* Parse-Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parse-Twitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52AF27B31E47D2150022475C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52AF27B51E47D2150022475C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		52AF27B21E47D2150022475C /* Parse-Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				527E7EE91E512109007EAAC9 /* Parse-Twitter.entitlements */,
 				D1DC26391E47DBA10064753F /* PostAction */,
 				52AF27B31E47D2150022475C /* AppDelegate.swift */,
 				52AF27B51E47D2150022475C /* ViewController.swift */,
@@ -145,6 +147,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = VY4FR2X9W5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -361,10 +368,11 @@
 			baseConfigurationReference = EE13F7D6C680A30A7F31CC23 /* Pods-Parse-Twitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parse-Twitter/Parse-Twitter.entitlements";
 				DEVELOPMENT_TEAM = VY4FR2X9W5;
 				INFOPLIST_FILE = "Parse-Twitter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-connect.Parse-Twitter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-connect.Parse-Twitter1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -375,10 +383,11 @@
 			baseConfigurationReference = BBA345CC756BAEF27F1B88AA /* Pods-Parse-Twitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parse-Twitter/Parse-Twitter.entitlements";
 				DEVELOPMENT_TEAM = VY4FR2X9W5;
 				INFOPLIST_FILE = "Parse-Twitter/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-connect.Parse-Twitter";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-connect.Parse-Twitter1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
