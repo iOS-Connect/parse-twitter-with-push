@@ -88,16 +88,16 @@ class Post : PFObject, PFSubclassing {
     static func parseClassName() -> String {
         return "Posts"
     }
-    @NSManaged var likes: Set<String>?
-//    {
-//        guard let likesObj = self["likes"],
-//            let likesString = likesObj as? [String] else {
-//                return nil
-//        }
-//        return Set<String>(likesString)
-//    }
-    @NSManaged var message: String?
-//    {
-//        return self["message"] as? String
-//    }
+     var likes: Set<String>?
+    {
+        guard let likesObj = self["likes"],
+            let likesString = likesObj as? [String] else {
+                return nil
+        }
+        return Set<String>(likesString)
+    }
+     var message: String?
+    {
+        return self["message"] as? String
+    }
 }
