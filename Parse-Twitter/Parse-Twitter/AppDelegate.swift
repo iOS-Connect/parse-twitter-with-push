@@ -1,6 +1,7 @@
 import UIKit
 import Parse
 import ParseUI
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupParse()
         appController.showFirstController()
         
+        requestNotification()
         return true
+    }
+    private func requestNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert]) { (completed, err) in
+            if completed {
+                print("agreed")
+                UIApplication.shared.registerForRemoteNotifications()
+                
+                } else {
+                print("not agreed")
+            }
+        }
     }
 
     private func setupParse() {
@@ -27,6 +42,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://iostwitter.herokuapp.com/parse"
         }
         Parse.initialize(with: config)
+    }
+}
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
     }
 }
 
