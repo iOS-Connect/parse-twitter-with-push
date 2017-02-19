@@ -72,10 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let user = PFUser.current()
         let installation = PFInstallation.current()
-        installation?["user"] = PFUser.current()
+        installation?["user"] = user
         installation?.setDeviceTokenFrom(deviceToken)
         installation?.saveInBackground()
+
+        user?["deviceToken"] = convertDeviceTokenToString(deviceToken: deviceToken)
     }
     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
@@ -157,3 +160,12 @@ extension UIApplication {
  -H "X-Parse-Application-Id: myAppId" \
   https://iostwitter.herokuapp.com/parse/classes/GameScore/uhnfSKBO0F
  */
+
+func convertDeviceTokenToString(deviceToken: Data?) -> String {
+    guard let deviceToken = deviceToken else { return "" }
+    let hexString = NSMutableString()
+    deviceToken.forEach { byte in
+        hexString.appendFormat("%02x", byte)
+    }
+    return hexString as String
+}
