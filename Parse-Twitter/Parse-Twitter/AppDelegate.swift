@@ -14,12 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupParse()
         appController.showFirstController()
         
-        requestNotification()
         handleRemoteNotification(from: launchOptions, for: application)
         return true
     }
     
-    private func requestNotification() {
+    func requestNotification() {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options: [.alert]) { (completed, err) in
@@ -112,6 +111,7 @@ class AppController {
     }
 
     func didLogin() {
+        UIApplication.shared.appDelegate.requestNotification()
         showFirstController()
     }
     
