@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12074.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,38 +28,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kVd-Ja-GfW" customClass="PFImageView">
-                                <rect key="frame" x="16" y="134" width="343" height="343"/>
-                                <color key="backgroundColor" red="0.79781636450000004" green="1" blue="0.70305999139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eU3-eO-h6b" appends="YES" id="ACh-Yx-tm8"/>
-                                </connections>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-Sj-hxg">
-                                <rect key="frame" x="163" y="525" width="48" height="30"/>
+                                <rect key="frame" x="163" y="117" width="48" height="30"/>
                                 <state key="normal" title="Post it!"/>
                                 <connections>
                                     <action selector="postButton:" destination="iZU-V4-7pC" eventType="touchUpInside" id="X6C-Tz-0H3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nad-WV-qKJ">
+                                <rect key="frame" x="24" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="cancel:" destination="iZU-V4-7pC" eventType="touchUpInside" id="CFr-am-PM8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YO2-vX-Uep" firstAttribute="leading" secondItem="kVd-Ja-GfW" secondAttribute="leading" id="1mS-xQ-lx0"/>
-                            <constraint firstItem="kVd-Ja-GfW" firstAttribute="top" secondItem="YO2-vX-Uep" secondAttribute="bottom" constant="25" id="37P-vE-ZW5"/>
-                            <constraint firstItem="YO2-vX-Uep" firstAttribute="trailing" secondItem="kVd-Ja-GfW" secondAttribute="trailing" id="50O-To-pey"/>
-                            <constraint firstItem="Mfp-Tn-OZe" firstAttribute="top" secondItem="5F5-Sj-hxg" secondAttribute="bottom" constant="112" id="Nlf-zM-Iv4"/>
-                            <constraint firstItem="5F5-Sj-hxg" firstAttribute="top" secondItem="kVd-Ja-GfW" secondAttribute="bottom" constant="48" id="WP1-2p-een"/>
+                            <constraint firstItem="5F5-Sj-hxg" firstAttribute="top" secondItem="YO2-vX-Uep" secondAttribute="bottom" constant="8" id="FnE-ph-ndo"/>
+                            <constraint firstItem="5F5-Sj-hxg" firstAttribute="centerX" secondItem="4cO-cs-n3h" secondAttribute="centerX" id="UKc-Ve-2z3"/>
                             <constraint firstItem="YO2-vX-Uep" firstAttribute="top" secondItem="iDx-vp-IY7" secondAttribute="bottom" constant="59" id="csm-nH-wQ1"/>
                             <constraint firstItem="YO2-vX-Uep" firstAttribute="leading" secondItem="4cO-cs-n3h" secondAttribute="leadingMargin" id="g4v-SG-LFJ"/>
                             <constraint firstItem="YO2-vX-Uep" firstAttribute="trailing" secondItem="4cO-cs-n3h" secondAttribute="trailingMargin" id="tll-JG-IVw"/>
-                            <constraint firstItem="kVd-Ja-GfW" firstAttribute="centerX" secondItem="5F5-Sj-hxg" secondAttribute="centerX" id="xVj-10-UDZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="messageField" destination="YO2-vX-Uep" id="SW6-TT-q8a"/>
-                        <outlet property="myImage" destination="kVd-Ja-GfW" id="tc7-0Y-cfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEu-T5-rLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
