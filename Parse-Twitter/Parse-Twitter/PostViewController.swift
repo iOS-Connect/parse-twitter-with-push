@@ -3,13 +3,8 @@ import Parse
 import ParseUI
 
 class PostViewController: UIViewController {
-    @IBOutlet weak var myImage: PFImageView!
 
     @IBOutlet weak var messageField: UITextField!
-    
-    @IBAction func imageOptions(_ sender: Any) {
-        print("tapped")
-    }
 
     @IBAction func postButton(_ sender: Any) {
         print("Message: \(messageField.text)")
