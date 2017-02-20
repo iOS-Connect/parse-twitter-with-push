@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DA305CA1E5120880040CA45 /* Parse-Twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Parse-Twitter.entitlements"; sourceTree = "<group>"; };
 		0DC519AC1E47DE2300166065 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		0DF9B2741E47E44D00EDC9E6 /* ChatTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatTable.storyboard; sourceTree = "<group>"; };
 		527E7EE91E512109007EAAC9 /* Parse-Twitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Parse-Twitter.entitlements"; sourceTree = "<group>"; };

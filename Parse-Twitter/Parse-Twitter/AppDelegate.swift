@@ -1,6 +1,7 @@
 import UIKit
 import Parse
 import ParseUI
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupParse()
         appController.showFirstController()
         
+        handleRemoteNotification(from: launchOptions, for: application)
         return true
+    }
+    
+    func requestNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert]) { (completed, err) in
+            if completed {
+                print("agreed")
+                
+                UIApplication.shared.registerForRemoteNotifications()
+                self.playLocalNotification()
+                } else {
+                print("not agreed")
+            }
+        }
+    }
+    
+    private func handleRemoteNotification(from launchOptions:[UIApplicationLaunchOptionsKey: Any]?, for application: UIApplication) {
+        if let launchOptions = launchOptions {
+            if let notificationDictionary = launchOptions[.remoteNotification] as? [NSObject : AnyObject] {
+                self.application(application, didReceiveRemoteNotification: notificationDictionary, fetchCompletionHandler: { (result) in
+                    
+                })
+            }
+        }
+    }
+    
+    private func playLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "title"
+        content.body = "sexy body"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "request.id", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (err) in
+            if(err != nil) {
+                print("failed to schedule \(err)")
+            }
+        }
     }
 
     private func setupParse() {
@@ -27,6 +67,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://iostwitter.herokuapp.com/parse"
         }
         Parse.initialize(with: config)
+    }
+}
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let user = PFUser.current()
+        let installation = PFInstallation.current()
+        installation?["user"] = user
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
+
+        user?["deviceToken"] = convertDeviceTokenToString(deviceToken: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PFPush.handle(userInfo)
     }
 }
 
@@ -51,6 +114,7 @@ class AppController {
     }
 
     func didLogin() {
+        UIApplication.shared.appDelegate.requestNotification()
         showFirstController()
     }
     
@@ -96,3 +160,12 @@ extension UIApplication {
  -H "X-Parse-Application-Id: myAppId" \
   https://iostwitter.herokuapp.com/parse/classes/GameScore/uhnfSKBO0F
  */
+
+func convertDeviceTokenToString(deviceToken: Data?) -> String {
+    guard let deviceToken = deviceToken else { return "" }
+    let hexString = NSMutableString()
+    deviceToken.forEach { byte in
+        hexString.appendFormat("%02x", byte)
+    }
+    return hexString as String
+}

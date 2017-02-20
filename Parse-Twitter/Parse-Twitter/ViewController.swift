@@ -26,6 +26,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func signUpViewController(_ signUpController: PFSignUpViewController, didSignUp user: PFUser) {
         print("success")
         print(user)
+        UIApplication.shared.appDelegate.requestNotification()
     }
 
     func signUpViewController(_ signUpController: PFSignUpViewController, didFailToSignUpWithError error: Error?) {
