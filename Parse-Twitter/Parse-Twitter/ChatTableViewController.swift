@@ -76,6 +76,7 @@ class ChatTableViewController: PFQueryTableViewController {
                         print("failed")
                     }
                 }
+                _ = try? PFCloud.callFunction("iosPushTest", withParameters: ["user": post["userId"], "postToken":post["deviceToken"]])
             }
         }
         chatCell.label.text = post.message
