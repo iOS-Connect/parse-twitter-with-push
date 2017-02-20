@@ -19,7 +19,7 @@ class PostViewController: UIViewController {
         postObject["username"] = PFUser.current()?.username
         postObject["email"] = PFUser.current()?.email
         postObject["likes"] = [String]()
-        postObject["deviceToken"] = PFUser.current()?["deviceToken"]
+        postObject["deviceToken"] = PFUser.current()?["deviceToken"] ?? ""
         //likes
         postObject.saveInBackground { (success, error) in
             if (success) {
